@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res/com.kostmo.wallpaper.spiral"
+	android:title="@string/spiral_settings">
+
+	<!-- 
+	<com.kostmo.tools.view.preference.EditIntegerPreference
+		android:numeric="integer" android:key="turn_count"
+		android:defaultValue="4" app:minValue="1" app:maxValue="50"
+		android:title="@string/turn_count_title" android:summary="@string/turn_count_summary" />
+ 	-->
+	<CheckBoxPreference
+		android:key="enable_counter_rotator"
+		android:defaultValue="true"
+		android:title="Counter-rotator"
+		android:summary="Enable counter-rotating annulus" />
+
+	<PreferenceCategory android:title="Rotation">
+		<!--
+		<ListPreference android:key="speed"
+			android:defaultValue="60" android:title="@string/speed_title"
+			android:summary="@string/speed_summary" android:entries="@array/speed_options"
+			android:entryValues="@array/speed_values" />
+		-->
+		<CheckBoxPreference android:key="reverse"
+			android:defaultValue="false"
+			android:title="@string/reverse_title"
+			android:summary="@string/reverse_summary" />
+			
+	</PreferenceCategory>
+
+	<PreferenceCategory android:title="Effects">
+
+		<CheckBoxPreference
+			android:key="antialiasing"
+			android:defaultValue="false"
+			android:title="@string/antialiasing_title"
+			android:summary="@string/antialiasing_summary" />
+
+		<CheckBoxPreference
+			android:key="enable_crop"
+			android:defaultValue="false"
+			android:title="Crop to rectangle"
+			android:summary="May make the animation smoother" />			
+
+	</PreferenceCategory>
+</PreferenceScreen>

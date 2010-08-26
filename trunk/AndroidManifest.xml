@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<manifest
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.kostmo.wallpaper.spiral" android:versionCode="6" android:versionName="1.3.2">
+
+    <application
+        android:label="@string/wallpapers" android:icon="@drawable/market_icon">
+
+        <service
+            android:label="@string/wallpaper_hypno"
+            android:name="com.kostmo.wallpaper.spiral.SpiralWallpaper"
+            android:permission="android.permission.BIND_WALLPAPER">
+            <intent-filter>
+                <action android:name="android.service.wallpaper.WallpaperService" />
+            </intent-filter>
+            <meta-data android:name="android.service.wallpaper" android:resource="@xml/spiral" />
+        </service>
+        
+        <activity
+            android:label="@string/spiral_settings"
+            android:name="com.kostmo.wallpaper.spiral.activity.prefs.SpiralWallpaperSettings"
+            android:theme="@style/Theme.DarkerWallpaperSettings"
+            android:exported="true" android:icon="@drawable/logo_spiral">
+        </activity>
+
+        <activity
+            android:label="@string/hypnodisc_settings"
+            android:name="com.kostmo.wallpaper.spiral.activity.prefs.PrefsHypnoDisc"
+            android:theme="@style/Theme.DarkerWallpaperSettings"
+            android:icon="@drawable/logo_spiral">
+        </activity>
+
+		<activity android:name="com.kostmo.wallpaper.spiral.activity.HypnoActivity"
+        	android:theme="@android:style/Theme.NoTitleBar.Fullscreen" android:label="@string/hypno_disc" android:icon="@drawable/logo_spiral" android:screenOrientation="unspecified">
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            
+        	</activity>
+
+
+
+    </application>
+    
+    
+
+	<uses-permission android:name="android.permission.WAKE_LOCK" />
+	<uses-sdk android:targetSdkVersion="7" android:minSdkVersion="7"></uses-sdk>
+</manifest>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+    <string name="dialog_title_instructions">Motion Illusion</string>
+    <string name="instructions_home">The Volume or D-pad buttons will flip between the spiral and a painting. If you fixate closely on the center of the spiral for about 20 seconds, then look at the painting, waves of motion will appear!*\n\nIf it doesn\'t work, relax your eyes and stare longer, or try holding the screen closer.\n\n*May cause disorientation.</string>
+</resources>
