@@ -1,12 +1,7 @@
 package com.kostmo.wallpaper.spiral;
 
-import com.kostmo.tools.view.preference.ColorPreference;
-import com.kostmo.wallpaper.spiral.activity.prefs.SpiralWallpaperSettings;
-import com.kostmo.wallpaper.spiral.base.ArchimedeanSpiral;
-import com.kostmo.wallpaper.spiral.base.LogarithmicSpiral;
-import com.kostmo.wallpaper.spiral.base.SpiralGenerator;
-import com.kostmo.wallpaper.spiral.base.LogarithmicSpiral.SolidType;
-import com.kostmo.wallpaper.spiral.base.SpiralGenerator.SpiralType;
+import java.util.ArrayList;
+import java.util.List;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -14,6 +9,8 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Point;
+import android.graphics.PorterDuff;
+import android.graphics.PorterDuffXfermode;
 import android.graphics.Rect;
 import android.graphics.Paint.Join;
 import android.os.Handler;
@@ -22,8 +19,13 @@ import android.service.wallpaper.WallpaperService;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 
-import java.util.ArrayList;
-import java.util.List;
+import com.kostmo.tools.view.preference.ColorPreference;
+import com.kostmo.wallpaper.spiral.activity.prefs.SpiralWallpaperSettings;
+import com.kostmo.wallpaper.spiral.base.ArchimedeanSpiral;
+import com.kostmo.wallpaper.spiral.base.LogarithmicSpiral;
+import com.kostmo.wallpaper.spiral.base.SpiralGenerator;
+import com.kostmo.wallpaper.spiral.base.LogarithmicSpiral.SolidType;
+import com.kostmo.wallpaper.spiral.base.SpiralGenerator.SpiralType;
 
 
 public class SpiralWallpaper extends WallpaperService {
@@ -259,7 +261,7 @@ public class SpiralWallpaper extends WallpaperService {
 			}
 
 			// ====================================================================
-			void drawSpiral(Canvas c, int width, int height) {
+			void drawSpiral(Canvas c, int width, int height, int layer) {
 
 				final long now = SystemClock.elapsedRealtime();
 
@@ -269,18 +271,12 @@ public class SpiralWallpaper extends WallpaperService {
 
 
 				float spiral_scale = (float) this.spiral_generator.getScale(new Point(width, height));
-
-				c.save();
-				c.translate(this.mCenterX, this.mCenterY);
-				c.drawColor(this.background_color);	// Necessary to clear screen.
-
 				float elapsed_seconds = ((float)(now - this.mStartTime)) / 1000;	// elapsed seconds
 
 
-				float stroke_width = 0;
+				float stroke_width = 0.5f;
 				switch (this.assigned_spiral_type) {
-				case ARCHIMEDEAN:
-					stroke_width = 0.5f;
+				case ARCHIMEDEAN:	// Keep default
 					break;
 				case LOGARITHMIC:
 					int size = Math.max(width, height);
@@ -290,11 +286,20 @@ public class SpiralWallpaper extends WallpaperService {
 				}
 				this.mPaint.setStrokeWidth( stroke_width );
 
+				if (layer != 0) {
+					this.mPaint.setXfermode( new PorterDuffXfermode(PorterDuff.Mode.LIGHTEN) );
+				} else {
+					this.mPaint.setXfermode( null );
+				}
 
+				c.save();
 				c.scale(spiral_scale, spiral_scale);
-				c.rotate(360 * elapsed_seconds/this.rotational_period);
+				float rotation = 360 * elapsed_seconds/this.rotational_period;
+				if (layer != 0) {
+					rotation *= 1.5f;
+				}
+				c.rotate(rotation);
 				this.spiral_generator.draw(c, this.mPaint, getColorList(now));
-
 				c.restore();
 			}
 
@@ -379,10 +384,20 @@ public class SpiralWallpaper extends WallpaperService {
 				try {
 					c = holder.lockCanvas();
 					if (c != null) {
-						// draw something
-						drawSpiral(c, width, height);
+						
 
-						//                    drawTouchPoint(c);
+						c.drawColor(this.background_color);	// Necessary to clear screen.
+						c.translate(this.mCenterX, this.mCenterY);
+						
+
+						drawSpiral(c, width, height, 0);
+
+
+//						c.scale(-1, 1);
+//						drawSpiral(c, width, height, 1);
+					
+						
+//						drawTouchPoint(c);
 					}
 				} finally {
 					if (c != null) holder.unlockCanvasAndPost(c);
