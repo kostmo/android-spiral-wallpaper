@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+
+    <drawable name="drawable_black">@android:color/black</drawable>
+    <drawable name="drawable_white">@android:color/white</drawable>
+
+    <color name="half_translucent_black">#8000</color>
+    <color name="partly_translucent_black">#B000</color>
+    <color name="mostly_translucent_black">#E000</color>
+    
+    
+    <color name="red">#F00</color>
+    <color name="yellow">#FF0</color>
+    <color name="pale_blue">#7f7fe6</color>
+    <color name="pale_green">#7fe67f</color>
+
+    <color name="transparent">#0000</color>
+
+</resources>
