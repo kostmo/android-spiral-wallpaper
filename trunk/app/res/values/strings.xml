@@ -16,9 +16,16 @@
     <string name="wallpapers">HypnoTwister</string>
     <!-- <string name="wallpapers">Spirotaxis</string> -->
     
-    <!-- Wallpaper showing a cube or dodecahedron, data read from resource -->
+
     <string name="wallpaper_hypno">HypnoTwister</string>
     <string name="wallpaper_hypno_description">A configurable, animated \"sorcerer\'s pinwheel\" hypnotic spiral pattern.</string>
+
+
+    <string name="wallpaper_deco">DecoLines</string>
+    <string name="wallpaper_deco_description">Animated wiggly deco lines.</string>
+
+
+
 
     <string name="author">Karl Ostmo</string>
 

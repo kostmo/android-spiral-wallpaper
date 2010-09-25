@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res/com.kostmo.wallpaper.spiral"
+	android:title="@string/spiral_settings">
+
+	<PreferenceCategory android:title="Style">
+
+		<PreferenceScreen android:title="Shape"
+			android:summary="Deco shape attributes">
+
+			<PreferenceCategory android:title="Shape">
+
+				<com.kostmo.tools.view.preference.FloatRangeSeekBarPreference
+						android:key="wigglyness"
+				        android:dialogMessage="@string/pitch_title"
+						android:dialogLayout="@layout/seekbar_float_preference_dialog"
+						android:negativeButtonText="@null"
+						 
+       					app:rangeMin="-5"
+						app:rangeMax="5"
+
+				        android:defaultValue="-0.3"
+						android:title="@string/pitch_title"
+						android:summary="@string/pitch_summary"
+				        />
+
+
+				<com.kostmo.tools.view.preference.EditIntegerPreference
+					android:numeric="integer"
+					android:key="strip_count"
+					android:defaultValue="4" app:minValue="1" app:maxValue="50"
+					android:title="@string/strip_count_title"
+					android:summary="@string/strip_count_summary" />
+
+			</PreferenceCategory>
+		</PreferenceScreen>
+
+
+
+		<PreferenceScreen android:title="Color"
+			android:summary="Color for background and foreground">
+
+			<PreferenceCategory android:title="Randomization">
+
+				<PreferenceScreen android:title="Randomization constraints"
+					android:summary="Constraints on the random color values">
+
+					<CheckBoxPreference android:key="enable_fixed_brightness"
+						android:defaultValue="true" android:title="@string/enable_fixed_brightness_title"
+						android:summary="@string/enable_fixed_brightness_summary" />
+
+					<!--  
+					<com.kostmo.tools.view.preference.EditIntegerPreference
+						android:key="fixed_brightness_level"
+						android:numeric="decimal"
+						android:defaultValue="0.5"
+						android:title="@string/brightness_level_title"
+						android:summary="@string/brightness_level_summary"
+						android:dependency="enable_fixed_brightness" />
+					-->
+					
+					<com.kostmo.tools.view.preference.SeekBarPreference
+							android:key="fixed_brightness_level"
+					        android:dialogMessage="@string/brightness_level_title"
+					        
+							android:dialogLayout="@layout/seekbar_preference_dialog"
+					        
+					        android:defaultValue="50"
+					        android:max="100"
+							android:title="@string/brightness_level_title"
+							android:summary="@string/brightness_level_summary"
+							android:dependency="enable_fixed_brightness"
+					        />
+
+
+					<CheckBoxPreference android:key="enable_fixed_saturation"
+						android:defaultValue="true" android:title="@string/enable_fixed_saturation_title"
+						android:summary="@string/enable_fixed_saturation_summary" />
+
+					<!--
+					<com.kostmo.tools.view.preference.EditIntegerPreference
+						android:numeric="decimal"
+						android:key="fixed_saturation_level"
+						android:dependency="enable_fixed_saturation"
+						android:defaultValue="0.5"
+						android:title="@string/saturation_level_title"
+						android:summary="@string/saturation_level_summary" />
+					-->
+						
+					<com.kostmo.tools.view.preference.SeekBarPreference
+							android:key="fixed_saturation_level"
+							
+							android:dialogLayout="@layout/seekbar_preference_dialog"
+							
+					        android:dialogMessage="@string/saturation_level_title"
+					        android:defaultValue="50"
+					        android:max="100"
+							android:title="@string/saturation_level_title"
+							android:summary="@string/saturation_level_summary"
+							android:dependency="enable_fixed_saturation"
+					        />
+
+				</PreferenceScreen>
+
+				<Preference android:key="generate_random_colors"
+					android:widgetLayout="@layout/image_holder"
+					android:title="@string/generate_random_colors_title"
+					android:summary="@string/generate_random_colors_summary" />
+				
+			</PreferenceCategory>
+
+
+			<PreferenceCategory android:title="Chosen colors">
+
+				<com.kostmo.tools.view.preference.ColorPreference
+					android:key="color_primary" android:defaultValue="@color/pale_blue"
+					android:widgetLayout="@layout/color_swatch" android:summary="Color of primary spiral arm"
+					android:title="Primary color" />
+
+				<com.kostmo.tools.view.preference.ColorPreference
+					android:key="color_secondary" android:defaultValue="@color/pale_green"
+					android:widgetLayout="@layout/color_swatch" android:summary="Color of secondary spiral arm"
+					android:title="Secondary color" />
+
+				<com.kostmo.tools.view.preference.ColorPreference
+					android:key="color_background" android:defaultValue="@android:color/black"
+					android:widgetLayout="@layout/color_swatch" android:summary="Color behind the spiral"
+					android:title="Background" />
+
+			</PreferenceCategory>
+
+			<PreferenceCategory android:title="Color cycling">
+
+				<CheckBoxPreference android:key="enable_color_cycling"
+					android:defaultValue="true" android:title="@string/color_cycling_title"
+					android:summary="@string/color_cycling_summary" />
+
+				<CheckBoxPreference android:key="enable_constant_color_cycling"
+					android:defaultValue="false"
+					android:disableDependentsState="true"
+					android:title="@string/constant_color_cycling_title"
+					android:dependency="enable_color_cycling"
+					android:summary="@string/constant_color_cycling_summary" />
+
+				<com.kostmo.tools.view.preference.EditIntegerPreference
+					android:dependency="enable_constant_color_cycling"
+					android:numeric="integer" android:key="color_cycler_minutes"
+					android:defaultValue="1"
+					app:minValue="1" app:maxValue="60" android:title="@string/cycle_time_title"
+					android:summary="@string/cycle_time_summary" />
+
+			</PreferenceCategory>
+		</PreferenceScreen>
+	</PreferenceCategory>
+
+	<PreferenceCategory android:title="Effects">
+
+		<CheckBoxPreference android:key="antialiasing"
+			android:defaultValue="true" android:title="@string/antialiasing_title"
+			android:summary="@string/antialiasing_summary" />
+
+	</PreferenceCategory>
+</PreferenceScreen>

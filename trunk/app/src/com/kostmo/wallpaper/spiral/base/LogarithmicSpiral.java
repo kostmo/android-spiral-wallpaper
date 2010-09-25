@@ -111,8 +111,7 @@ public class LogarithmicSpiral extends SpiralGenerator {
 
 		return path;
 	}
-
-
+	
 	// ========================================================================
 	public Path createHalfSolidPath() {
 

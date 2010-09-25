@@ -5,35 +5,6 @@
     <string name="hypnodisc_settings">Hypno-Disc Settings</string>
 
 
-    <string name="spiral_settings">HypnoTwister Settings</string>
-    <string name="spiral_type_title">Spiral style</string>
-    <string name="spiral_type_summary">Choose the type of spiral</string>
-    
-    <string name="speed_title">Speed</string>
-    <string name="speed_summary">How fast the spiral rotates</string>
-    
-    <string name="antialiasing_title">Antialiasing</string>
-    <string name="antialiasing_summary">Draw with smooth edges (slower)</string>
-    
-    <string name="reverse_title">Reverse</string>
-    <string name="reverse_summary">Reverse rotation direction</string>
-   
-    
-    <string name="turn_count_title">Turn count</string>
-    <string name="turn_count_summary">Number of spiral turns. This should be increased for large Pitch values.</string>
-    
-    <string name="pitch_title">Pitch</string>
-    <string name="pitch_summary">Angle of Logarithmic spiral slope. Values between -1 and 0 tend to look best.</string>
-    
-    <string name="solid_type_title">Arm style</string>
-    <string name="solid_type_summary">Style for Logarithmic spiral arms</string>
-
-    <string name="color_cycling_title">Cycle colors</string>
-    <string name="color_cycling_summary">Periodically switch to new random colors</string>
-    
-    <string name="constant_color_cycling_title">Cycle continuously</string>
-    <string name="constant_color_cycling_summary">Cycle through colors without a break</string>
-    
     
     <string name="cycle_time_title">Cycle time</string>
     <string name="cycle_time_summary">How many minutes between color changes</string>

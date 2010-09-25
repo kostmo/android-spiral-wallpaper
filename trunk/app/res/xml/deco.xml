@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<wallpaper xmlns:android="http://schemas.android.com/apk/res/android"
+        android:settingsActivity="com.kostmo.wallpaper.spiral.activity.prefs.DecoWallpaperSettings"
+        android:thumbnail="@drawable/deco_thumbnail"
+        android:description="@string/wallpaper_deco_description"
+        android:author="@string/author"
+/>

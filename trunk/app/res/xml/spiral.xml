@@ -2,7 +2,7 @@
 
 <wallpaper xmlns:android="http://schemas.android.com/apk/res/android"
         android:settingsActivity="com.kostmo.wallpaper.spiral.activity.prefs.SpiralWallpaperSettings"
-        android:thumbnail="@drawable/wallpaper_thumbnail"
+        android:thumbnail="@drawable/spiral_thumbnail"
         android:description="@string/wallpaper_hypno_description"
         android:author="@string/author"
 />
