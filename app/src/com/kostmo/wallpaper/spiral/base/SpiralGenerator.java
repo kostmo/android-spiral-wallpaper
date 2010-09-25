@@ -44,7 +44,7 @@ public abstract class SpiralGenerator {
 	}
 
 	// ========================================================================
-	void initialize() {
+	protected void initialize() {
 		float arc_span = TWO_PI / this.arc_divisions;
 		this.bezier_points = generateBezierPoints(arc_span, this.periods);
 		this.simple_path = createPath();
@@ -69,18 +69,17 @@ public abstract class SpiralGenerator {
 	}
 
 	// ========================================================================
-	Path getSimplePath() {
+	protected Path getSimplePath() {
 		return this.simple_path;
 	}
 
 	// ========================================================================
-	// Keep this private.
-	List<BezierPoint> getBezierPoints() {
+	private List<BezierPoint> getBezierPoints() {
 		return this.bezier_points;
 	}
 
 	// ========================================================================
-	Path createPath() {
+	private Path createPath() {
 		Path path = new Path();
 
 		PointF start_point = getStartingPoint();
@@ -93,7 +92,7 @@ public abstract class SpiralGenerator {
 	}
 
 	// ========================================================================
-	List<BezierPoint> generateBezierPoints(float incremental_angle, int periods) {
+	private List<BezierPoint> generateBezierPoints(float incremental_angle, int periods) {
 		List<BezierPoint> points = new ArrayList<BezierPoint>();
 		
 		int iteration_count = this.arc_divisions * periods;
@@ -108,7 +107,7 @@ public abstract class SpiralGenerator {
 	}
 
 	// ========================================================================
-	PointF spiralPoint(float angle) {
+	private PointF spiralPoint(float angle) {
 		float radius = spiralRadius(angle);
 		return new PointF(
 				FloatMath.cos(angle) * radius,
@@ -118,7 +117,7 @@ public abstract class SpiralGenerator {
 
 	// ========================================================================
 	// Accepts a 4-element float
-	void cubicBezierCoefficients(double t, double[] coefficients) {
+	private void cubicBezierCoefficients(double t, double[] coefficients) {
 		double one_minus_t = 1-t;
 		coefficients[0] = one_minus_t*one_minus_t*one_minus_t; 
 		coefficients[1] = 3*one_minus_t*one_minus_t * t;
@@ -128,7 +127,7 @@ public abstract class SpiralGenerator {
 
 	// ========================================================================
 	double[] mc = new double[4];
-	BezierPoint solveBezierControlPoints(float arc_angle, float curve_start_angle) {
+	private BezierPoint solveBezierControlPoints(float arc_angle, float curve_start_angle) {
 
 		float curve_end_angle = curve_start_angle + arc_angle;
 		float curve_mid_angle = (curve_start_angle + curve_end_angle)/2;
@@ -204,12 +203,12 @@ public abstract class SpiralGenerator {
 	}
 	
 	// ========================================================================
-	static String printPoint(PointF point) {
+	private static String printPoint(PointF point) {
 		return String.format("(%.2f, %.2f)", point.x, point.y);
 	}
 
 	// ========================================================================
-	void debugMatrix(Matrix matrix, String name) {
+	private void debugMatrix(Matrix matrix, String name) {
 
 		String TAG = getClass().getSimpleName();
 		Log.d(TAG, "Printing matrix " + name + ":");
@@ -220,7 +219,7 @@ public abstract class SpiralGenerator {
 	}
 
 	// ========================================================================
-	void debugCurve() {
+	private void debugCurve() {
 		String TAG = getClass().getSimpleName();
 		Log.d(TAG, "First Bezier coords:");
 		
@@ -232,11 +231,11 @@ public abstract class SpiralGenerator {
 	}
 
 	// ========================================================================
-	PointF getStartingPoint() {
+	private PointF getStartingPoint() {
 		return this.bezier_points.get(0).start;
 	}
 	
-	PointF getEndingPoint() {
+	protected PointF getEndingPoint() {
 		return this.bezier_points.get(this.bezier_points.size() - 1).end;
 	}
 }

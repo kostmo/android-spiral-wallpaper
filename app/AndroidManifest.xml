@@ -2,7 +2,7 @@
 
 <manifest
     xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.kostmo.wallpaper.spiral" android:versionName="1.3.3" android:versionCode="8">
+    package="com.kostmo.wallpaper.spiral" android:versionName="1.3.4" android:versionCode="9">
 
     <application
         android:label="@string/wallpapers" android:icon="@drawable/market_icon">
@@ -23,6 +23,26 @@
             android:theme="@style/Theme.DarkerWallpaperSettings"
             android:exported="true" android:icon="@drawable/logo_spiral">
         </activity>
+
+
+		<!--
+        <service
+            android:label="@string/wallpaper_deco"
+            android:name="com.kostmo.wallpaper.spiral.DecoWallpaper"
+            android:permission="android.permission.BIND_WALLPAPER">
+            <intent-filter>
+                <action android:name="android.service.wallpaper.WallpaperService" />
+            </intent-filter>
+            <meta-data android:name="android.service.wallpaper" android:resource="@xml/deco" />
+        </service>
+
+        <activity
+            android:label="@string/deco_settings"
+            android:name="com.kostmo.wallpaper.spiral.activity.prefs.DecoWallpaperSettings"
+            android:theme="@style/Theme.DarkerWallpaperSettings"
+            android:exported="true" android:icon="@drawable/logo_deco">
+        </activity>
+		-->
 
         <activity
             android:label="@string/hypnodisc_settings"
