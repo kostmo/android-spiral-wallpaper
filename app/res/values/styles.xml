@@ -3,6 +3,6 @@
 <resources>
 
 	<style name="Theme.DarkerWallpaperSettings" parent="@android:style/Theme.WallpaperSettings">
-	    <item name="android:windowBackground">@color/mostly_translucent_black</item>
+	    <item name="android:windowBackground">@color/partly_translucent_black</item>
 	</style>
 </resources>

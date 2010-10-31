@@ -30,6 +30,11 @@ import com.kostmo.wallpaper.spiral.SpiralWallpaper;
 
 public class SpiralWallpaperSettings extends PreferenceActivity implements ColorReceiverActivity {
 
+	
+    static final String TAG = "SpiralWallpaperSettings";
+    
+	
+	
     public static final String PREFKEY_COLOR_PRIMARY = "color_primary";
     public static final String PREFKEY_COLOR_SECONDARY = "color_secondary";
     public static final String PREFKEY_COLOR_BACKGROUND = "color_background";
@@ -56,6 +61,10 @@ public class SpiralWallpaperSettings extends PreferenceActivity implements Color
     public static final String PREFKEY_FIXED_SATURATION_LEVEL = "fixed_saturation_level";
     
     // ============
+    
+    
+    public static final String BUNDLEKEY_PENDING_COLOR_PREFKEY = "pending_color_prefkey";
+    
     // Defaults:
     public static final int DEFAULT_COLOR_CYCLER_MINUTES = 1;
     public static final float DEFAULT_PITCH = -0.3f;
@@ -121,7 +130,22 @@ public class SpiralWallpaperSettings extends PreferenceActivity implements Color
 		final StateObject state = (StateObject) getLastNonConfigurationInstance();
 		if (state != null) {
 			this.pending_color_prefkey = state.pending_color_prefkey;
+		} else {
+			if (icicle.containsKey( BUNDLEKEY_PENDING_COLOR_PREFKEY )) {
+				this.pending_color_prefkey = icicle.getString( BUNDLEKEY_PENDING_COLOR_PREFKEY );
+			}
 		}
+    }
+
+	// ========================================================================
+    @Override
+	protected
+    void onSaveInstanceState(Bundle outState) {
+    	super.onSaveInstanceState(outState);
+    	
+    	Log.d(TAG, "Called onSaveInstanceState()");
+    	
+    	outState.putString(BUNDLEKEY_PENDING_COLOR_PREFKEY, this.pending_color_prefkey);
     }
     
 	// ========================================================================
@@ -155,8 +179,6 @@ public class SpiralWallpaperSettings extends PreferenceActivity implements Color
 //    		fixed_saturation_level = prefs.getFloat(PREFKEY_FIXED_SATURATION_LEVEL, 0.5f);
     		fixed_saturation_level = prefs.getInt(PREFKEY_FIXED_SATURATION_LEVEL, 50) / (float) SeekBarPreference.DEFAULT_MAX;
     	}
-    	
-    	
     	
     	List<Integer> colors = new ArrayList<Integer>();
 
