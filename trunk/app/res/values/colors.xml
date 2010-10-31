@@ -6,8 +6,8 @@
     <drawable name="drawable_white">@android:color/white</drawable>
 
     <color name="half_translucent_black">#8000</color>
-    <color name="partly_translucent_black">#B000</color>
-    <color name="mostly_translucent_black">#E000</color>
+    <color name="somewhat_translucent_black">#B000</color>
+    <color name="partly_translucent_black">#E000</color>
     
     
     <color name="red">#F00</color>
