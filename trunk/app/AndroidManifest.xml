@@ -2,7 +2,7 @@
 
 <manifest
     xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.kostmo.wallpaper.spiral" android:versionName="1.3.4" android:versionCode="9">
+    package="com.kostmo.wallpaper.spiral" android:versionCode="9" android:versionName="1.3.5">
 
     <application
         android:label="@string/wallpapers" android:icon="@drawable/market_icon">

@@ -131,7 +131,7 @@ public class SpiralWallpaperSettings extends PreferenceActivity implements Color
 		if (state != null) {
 			this.pending_color_prefkey = state.pending_color_prefkey;
 		} else {
-			if (icicle.containsKey( BUNDLEKEY_PENDING_COLOR_PREFKEY )) {
+			if (icicle != null && icicle.containsKey( BUNDLEKEY_PENDING_COLOR_PREFKEY )) {
 				this.pending_color_prefkey = icicle.getString( BUNDLEKEY_PENDING_COLOR_PREFKEY );
 			}
 		}
