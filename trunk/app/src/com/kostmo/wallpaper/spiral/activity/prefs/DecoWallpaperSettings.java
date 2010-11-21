@@ -215,7 +215,7 @@ public class DecoWallpaperSettings extends PreferenceActivity implements ColorRe
 			})
 			.setNeutralButton(R.string.download_color_picker_web, new DialogInterface.OnClickListener() {
 				public void onClick(DialogInterface dialog, int whichButton) {
-					startActivity(new Intent(Intent.ACTION_VIEW, Market.APK_DOWNLOAD_URI_COLOR_PICKER));
+					startActivity(new Intent(Intent.ACTION_VIEW, Market.APK_DOWNLOAD_URI));
 				}
 			})
 			.create();

@@ -394,8 +394,8 @@ class BaseSpiral(gtk.DrawingArea):
 	# ---------------------------------------------------------------------
 	def capture_screenshot(self, widget):
 
-		img_width = 400
-		img_height = 300
+		img_width = 512
+		img_height = 512
 		filename = "spiral"
 
 		raster = True
