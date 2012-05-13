@@ -12,7 +12,7 @@
 
 <com.kostmo.tools.view.SwatchView
 	xmlns:android="http://schemas.android.com/apk/res/android"
-       android:id="@android:id/icon"
+       android:id="@+id/swatch_icon"
        android:layout_width="48sp"
        android:layout_height="48sp"
        android:layout_marginRight="6dip"

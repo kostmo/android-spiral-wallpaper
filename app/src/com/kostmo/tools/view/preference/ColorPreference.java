@@ -1,7 +1,5 @@
 package com.kostmo.tools.view.preference;
 
-import com.kostmo.tools.view.SwatchView;
-
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.preference.Preference;
@@ -9,6 +7,9 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import com.kostmo.tools.view.SwatchView;
+import com.kostmo.wallpaper.spiral.R;
 
 public class ColorPreference extends Preference {
 
@@ -59,8 +60,12 @@ public class ColorPreference extends Preference {
 		View v = super.getView(convertView, parent);
 		
 //		ImageView image_view = (ImageView) v.findViewById(android.R.id.icon);
-		SwatchView swatch_view = (SwatchView) v.findViewById(android.R.id.icon);
 
+//		SwatchView swatch_view = (SwatchView) v.findViewById(android.R.id.icon);
+		SwatchView swatch_view = (SwatchView) v.findViewById(R.id.swatch_icon);
+
+		
+		
 		int color = getPersistedInt(FALLBACK_PRIMARY_COLOR);
 		swatch_view.setColor(color);
 		
