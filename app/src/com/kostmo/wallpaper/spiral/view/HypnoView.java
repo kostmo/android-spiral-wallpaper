@@ -1,8 +1,7 @@
 package com.kostmo.wallpaper.spiral.view;
 
-import com.kostmo.wallpaper.spiral.activity.prefs.PrefsHypnoDisc;
-import com.kostmo.wallpaper.spiral.base.ArchimedeanSpiral;
-import com.kostmo.wallpaper.spiral.base.SpiralGenerator;
+import java.util.ArrayList;
+import java.util.List;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -10,22 +9,22 @@ import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.Paint.Join;
+import android.graphics.Paint.Style;
 import android.graphics.Point;
 import android.graphics.PorterDuff;
 import android.graphics.PorterDuffXfermode;
 import android.graphics.Rect;
 import android.graphics.RectF;
-import android.graphics.Paint.Join;
-import android.graphics.Paint.Style;
 import android.os.Handler;
 import android.os.SystemClock;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 
-import java.util.ArrayList;
-import java.util.List;
+import com.kostmo.wallpaper.spiral.activity.prefs.PrefsHypnoDisc;
+import com.kostmo.wallpaper.spiral.base.ArchimedeanSpiral;
+import com.kostmo.wallpaper.spiral.base.SpiralGenerator;
 
 
 public class HypnoView extends SurfaceView implements SurfaceHolder.Callback {
